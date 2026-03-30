@@ -1,0 +1,28 @@
+<h2>Candidates</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" *ngIf="candidates.length > 0; else emptyState">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Position</th>
+      <th>Stage</th>
+      <th>View</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let candidate of candidates">
+      <td>{{ candidate.id }}</td>
+      <td>{{ candidate.firstName }} {{ candidate.lastName }}</td>
+      <td>{{ candidate.email }}</td>
+      <td>{{ candidate.position }}</td>
+      <td>{{ candidate.stage }}</td>
+      <td><a [routerLink]="['/candidates', candidate.id]">Open</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #emptyState>
+  <p>No candidates found.</p>
+</ng-template>
